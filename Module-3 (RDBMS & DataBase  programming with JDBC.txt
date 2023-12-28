@@ -1,0 +1,69 @@
+1. SELECT distinct job FROM Emp_table;
+
+2. SELECT * FROM Emp_table ORDER BY deptno asc,job desc;
+
+3. SELECT distinct job FROM Emp_table GROUP BY job ORDER BY desc;
+
+4. SELECT * FROM Emp_table WHERE year(hiredata) < 1981;
+
+5. SELECT Empno,Ename,Sal FROM emp_table ORDER BY Sal ASC;
+
+6. SELECT Empno, Ename, Sal FROM Emp_table WHERE Mgr = 7369;
+
+7. SELECT * FROM Emp_table WHERE Comm > Sal;
+
+8. SELECT * FROM Emp_table WHERE Job IN("CLERK" ,"ANALYST") ORDER BY Job DESC ;
+
+9. SELECT * FROM Emp_table WHERE Sal BETWEEN 2200 AND 4500;
+
+10. SELECT Ename FROM Emp_table WHERE Ename LIKE 'S_ _ _ _';
+
+11. SELECT * FROM Emp_table WHERE NOT Empno LIKE "78%";
+
+12. SELECT * FROM Emp_table WHERE Job="CLERK" AND Deptno=20;
+
+13. 
+
+14. 
+
+15. SELECT * FROM Emp_table
+WHERE Sal IN (SELECT Sal FROM Emp_table WHERE Ename IN ('FORD', 'SMITH'))
+ORDER BY Sal DESC;
+
+16. SELECT * FROM Emp_table
+WHERE Job IN (SELECT Job FROM Emp_table WHERE Ename IN ('ALLEN', 'SMITH'))
+
+17. 
+
+18. SELECT MAX(Sal) FROM emp_table;
+
+19.
+
+20. SELECT SUM(Sal) FROM emp_table WHERE Job="MANAGER";
+
+21. SELECT * FROM emp_table WHERE Ename LIKE "A%";
+
+22. SELECT *,MIN(Sal) FROM emp_table GROUP BY Job ORDER BY Sal ASC;
+
+23. SELECT * FROM emp_table 
+WHERE sal > (SELECT sal FROM emp_table WHERE Ename="BLAKE")  ;
+
+24. CREATE VIEW v1 AS
+SELECT e.ename, e.job, d.dname, d.loc
+FROM emp_table e
+JOIN dept_table d ON e.deptno = d.deptno;
+
+25.
+DELIMITER //
+CREATE PROCEDURE GetEmployeeAndDepartment(IN dno INT)
+BEGIN
+    SELECT ename, dname
+    FROM emp_table
+    JOIN dept_table ON emp_table.deptno = dept_table.deptno
+    WHERE emp_table.deptno = dno;
+END //
+DELIMITER ;
+
+26. ALTER TABLE Student_table ADD COLUMN Pin BIGINT;
+
+27. ALTER TABLE Student MODIFY Sname VARCHAR(40);
